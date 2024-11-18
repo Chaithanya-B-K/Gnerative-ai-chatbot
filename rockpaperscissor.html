@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rock Paper Scissors</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			text-align: center;
+		}
+		
+		.result {
+			font-size: 24px;
+			font-weight: bold;
+			color: #007bff;
+		}
+		
+		.player-choice {
+			margin-top: 20px;
+		}
+		
+		.rock {
+			background-image: url('rock.png');
+			background-size: 50px 50px;
+		}
+		
+		.paper {
+			background-image: url('paper.png');
+			background-size: 50px 50px;
+		}
+		
+		.scissors {
+			background-image: url('scissors.png');
+			background-size: 50px 50px;
+		}
+		
+		/* Add images for rock, paper, and scissors */
+		
+		.rock-img {
+			background-image: url('rock.jpg');
+			background-size: 100px 100px;
+			margin-top: 20px;
+		}
+		
+		.paper-img {
+			background-image: url('paper.jpg');
+			background-size: 100px 100px;
+			margin-top: 20px;
+		}
+		
+		.scissors-img {
+			background-image: url('scissors.jpg');
+			background-size: 100px 100px;
+			margin-top: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h1>Rock Paper Scissors</h1>
+	<input type="text" id="player-choice" placeholder="Enter your choice (rock/paper/scissors)">
+	<button id="play-button">Play</button>
+	<div id="result" class="result"></div>
+	<div class="rock-img"></div>
+	<div class="paper-img"></div>
+	<div class="scissors-img"></div>
+	
+	<script>
+		const game = () => {
+			const choices = ["rock", "paper", "scissors"];
+			const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+			const playerChoice = document.getElementById("player-choice").value;
+			const result = document.getElementById("result");
+			if (playerChoice === computerChoice) {
+				result.textContent = "Tie!";
+			} else if ((playerChoice === "rock" && computerChoice === "scissors") || (playerChoice === "scissors" && computerChoice === "paper") || (playerChoice === "paper" && computerChoice === "rock")) {
+				result.textContent = "Player wins!";
+			} else {
+				result.textContent = "Computer wins!";
+			}
+		};
+		
+		document.getElementById("play-button").addEventListener("click", game);
+	</script>
+</body>
+</html>
